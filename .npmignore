@@ -10,3 +10,4 @@ appveyor.yml
 iob_npm.done
 /.vscode
 .vscode
+tsconfig.json

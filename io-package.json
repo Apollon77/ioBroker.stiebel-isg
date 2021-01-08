@@ -68,7 +68,9 @@
         "type": "climate-control",
         "license": "MIT",
         "messagebox": false,
-        "compact": true
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll"
     },
     "native": {
         "isgUser": "",
