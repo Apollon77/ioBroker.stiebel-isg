@@ -135,15 +135,11 @@ function updateState (strGroup,valTag,valTagLang,valType,valUnit,valRole,valValu
     }
     
     if(adapter.config.isgUmlauts == "no"){
-        valTag = valTag
-            .replace(/[\u00c4]+/g,"AE")           
-            .replace(/[\u00d6]+/g,"OE")
-            .replace(/[\u00dc]+/g,"UE");
-        strGroup = strGroup
-            .replace(/[\u00c4]+/g,"AE")           
-            .replace(/[\u00d6]+/g,"OE")
-            .replace(/[\u00dc]+/g,"UE");
+        valTag = Umlauts(valTag);
+        strGroup = Umlauts(strGroup);
     }
+
+    valTag = valTag.replace(/[\*]+/g,"_"); 
     
     adapter.log.debug("strGroup: "+strGroup);
 
@@ -342,15 +338,11 @@ async function getIsgValues(sidePath) {
 
 function createISGCommands (strGroup,valTag,valTagLang,valType,valUnit,valRole,valValue,valStates,valMin,valMax) {
     if(adapter.config.isgUmlauts == "no"){
-        valTag = valTag
-            .replace(/[\u00c4]+/g,"AE")           
-            .replace(/[\u00d6]+/g,"OE")
-            .replace(/[\u00dc]+/g,"UE");
-        strGroup = strGroup
-            .replace(/[\u00c4]+/g,"AE")           
-            .replace(/[\u00d6]+/g,"OE")
-            .replace(/[\u00dc]+/g,"UE");
+        valTag = Umlauts(valTag);
+        strGroup = Umlauts(strGroup);
     }
+
+    valTag = valTag.replace(/[\*]+/g,"_");
     
     valUnit = valUnit.replace(/ +0+/g,"");
 
@@ -691,6 +683,13 @@ function setIsgCommands(strKey, strValue) {
         commands = [];
     },5000);
 }
+
+function Umlauts(text_string) {
+    return text_string
+              .replace(/[\u00c4]+/g,"AE")           
+              .replace(/[\u00d6]+/g,"OE")
+              .replace(/[\u00dc]+/g,"UE")
+}  
 
 function main() {
     adapter.setObjectNotExists(

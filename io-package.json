@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "stiebel-isg",
-        "version": "1.6.0",
+        "version": "1.6.1",
         "news": {
+            "1.6.1": {
+                "en": "new values for isg-version 12 implemented",
+                "de": "neue Werte für ISG-Version 12 hinzugefügt"
+            },
             "1.6.0": {
                 "en": "isg-sites to read values from, can now be select by the user",
                 "de": "ISG-Seiten die ausgelesen werden, können nun vom User gewählt werden"
